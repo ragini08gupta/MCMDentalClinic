@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;        /* ← white for all other pages */
+  color: #1a1a2e;
+  overflow-x: hidden;
+}
+
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: center top;
+}
+
+nav {
+  background: none !important;           /* ← add this */
+  background-color: transparent !important; /* ← add this */
+}
+
+nav a {
+  color: rgba(255,255,255,0.75);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+nav a:hover {
+  color: #ffffff !important;
+}
