@@ -65,15 +65,13 @@ export default function Home() {
           <div style={{
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem',
           }}>
-            {[1,2,3,4].map(i => (
-              <div key={i} style={{
-                width: '180px', height: '180px',
-                background: '#c8e9f7',
-                borderRadius: '16px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#5BB4E5', fontSize: '0.85rem', fontWeight: 500,
-              }}>Add photo {i}</div>
-            ))}
+            {['/images/photo1.jpeg', '/images/photo2.jpeg', '/images/photo3.jpeg', '/images/photo4.jpeg'].map((src, i) => (
+            <img key={i} src={src} alt={`Clinic photo ${i + 1}`} style={{
+            width: '180px', height: '180px',
+            borderRadius: '16px',
+            objectFit: 'cover',
+            }} />
+          ))}
           </div>
         </section>
       </AnimatedSection>

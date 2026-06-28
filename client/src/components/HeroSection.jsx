@@ -66,7 +66,7 @@ export default function HeroSection() {
   position: 'relative',
 }}>
 
-      {/* ← top: 70px + reduced height so canvas never goes under navbar */}
+      {/* sticky viewport-filling canvas */}
       <div style={{
   position: 'sticky',
   top: 0,
@@ -81,13 +81,11 @@ export default function HeroSection() {
           height={1080}
           style={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            top: 0,
+            left: 0,
             width: '100%',
-            height: 'auto',
-            minHeight: '100%',
-            minWidth: '100%',
+            height: '100%',
+            objectFit: 'cover',
             display: 'block',
           }}
         />

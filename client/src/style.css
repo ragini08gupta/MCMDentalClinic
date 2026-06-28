@@ -20,16 +20,10 @@ body {
   perspective-origin: center top;
 }
 
-nav {
-  background: none !important;           /* ← add this */
-  background-color: transparent !important; /* ← add this */
-}
-
 nav a {
-  color: rgba(255,255,255,0.75);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  color: rgba(0,0,0,0.65);
 }
 
 nav a:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }

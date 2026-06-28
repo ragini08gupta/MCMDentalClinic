@@ -3,12 +3,12 @@ import AnimatedSection from '../components/AnimatedSection';
 
 export default function About() {
   return (
-    <div style={{ paddingTop: '70px', background: '#fff' }}>
+    <div style={{ background: '#fff' }}>
 
       {/* 1. Hero Banner with image */}
 <section style={{
   position: 'relative',
-  height: '500px',
+  height: '100vh',
   backgroundImage: 'url(/images/about-hero.jpg)',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
@@ -23,7 +23,17 @@ export default function About() {
   <div style={{
     position: 'absolute',
     inset: 0,
-    background: 'rgba(0, 60, 120, 0.55)',
+    //background: 'rgba(0, 60, 110, 0.55)',
+    background: `
+  linear-gradient(
+    to bottom,
+    rgb(222 227 231 / 15%) 0%,
+    rgb(81 84 86 / 35%) 40%,
+    rgb(54 60 65 / 60%) 70%,
+    rgb(9 87 153 / 85%) 100%
+  )
+`,
+    
   }} />
 
   {/* Text sits above the overlay */}
@@ -72,7 +82,7 @@ export default function About() {
             Care beyond<br />every treatment
           </h2>
           <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            We see every smile as a story — and every patient as a person,
+            We see every smile as a story and every patient as a person,
             not a procedure. Our approach is built on trust, comfort, and
             transparent communication.
           </p>
@@ -96,7 +106,7 @@ export default function About() {
 
         <AnimatedSection delay={0.2}>
           <img
-            src="/images/clinic-waiting.jpg"
+            src="/images/clinic-waiting.jpeg"
             alt="MCM Dental clinic waiting area"
             onError={(e) => {
               e.target.style.background = 'linear-gradient(135deg, #e0f0ff, #b3d9f7)';
@@ -165,7 +175,7 @@ export default function About() {
         <AnimatedSection delay={0.1}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <img
-              src="/images/dentist-working.jpg"
+              src="/images/dentist-working.jpeg"
               alt="Dentist at work"
               onError={(e) => {
                 e.target.style.background = '#cce8f7';
@@ -272,9 +282,9 @@ export default function About() {
           margin: '0 auto',
         }}>
           {[
-            { name: 'Dr. M. Sharma', role: 'Lead Dentist & Founder', img: '/images/doctor1.jpg' },
-            { name: 'Dr. C. Mehta', role: 'Orthodontist', img: '/images/doctor2.jpg' },
-            { name: 'Dr. R. Kapoor', role: 'Oral Surgeon', img: '/images/doctor3.jpg' },
+            { name: 'On call', role: 'Orthodontist', img: '/images/doctor2.jpg' },
+            { name: 'Dr. Mukul Kumar', role: 'Lead Dentist & Founder', img: '/images/doctor1.jpeg' },
+            { name: 'On call', role: 'Oral Surgeon', img: '/images/doctor3.jpg' },
           ].map((doc, i) => (
             <AnimatedSection key={doc.name} delay={i * 0.15}>
               <div style={{
@@ -295,7 +305,7 @@ export default function About() {
                     width: '100%',
                     height: '300px',
                     objectFit: 'cover',
-                    objectPosition: 'top',
+                    objectPosition: 'center',
                   }}
                 />
                 <div style={{ padding: '1.5rem' }}>
