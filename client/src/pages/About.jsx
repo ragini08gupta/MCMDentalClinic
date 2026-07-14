@@ -54,8 +54,7 @@ export default function About() {
         maxWidth: '600px',
         margin: '0 auto',
       }}>
-        At MCM Dental, we believe that visiting a dentist should
-        feel calm, personal, and stress-free.
+        Established on 1st September 2002 in Kasumpti Market, Shimla, MCM Dental Clinic has been delivering trusted dental care for over two decades.
       </p>
     </AnimatedSection>
   </div>
@@ -79,13 +78,16 @@ export default function About() {
             lineHeight: 1.2,
             marginBottom: '1.5rem',
           }}>
-            Care beyond<br />every treatment
+            A Legacy of<br />Trusted Dental Care
           </h2>
           <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            We see every smile as a story and every patient as a person,
-            not a procedure. Our approach is built on trust, comfort, and
-            transparent communication.
-          </p>
+          Dr. Mukul Kumar holds a BDS degree from HP Government Dental College, 
+          Shimla and regularly pursues advanced training to stay updated with the latest in modern dentistry.<br />
+          <br/>
+          An active member of the Indian Dental Association (IDA), 
+          he is a former Vice President of the Himachal Pradesh State Branch 
+          and currently serves as an Executive Member.
+          Over 20 years of experience, committed to ethical, patient-focused dental care.</p>
           <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
             From the first consultation to follow-up visits, our goal is to
             make your experience as comfortable as possible.
@@ -140,7 +142,7 @@ export default function About() {
             textAlign: 'center',
           }}>
             {[
-              { number: '5,000+', label: 'Happy Patients' },
+              { number: '80,000+', label: 'Happy Patients' },
               { number: 'Since 2002', label: 'Trusted Experience' },
               { number: '100%', label: 'Certified Professionals' },
             ].map((stat) => (
@@ -223,11 +225,11 @@ export default function About() {
           </h2>
           <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '1.5rem' }}>
             With over 20 years of combined experience, our team provides a full
-            range of dental treatments — from preventive check-ups to advanced
+            range of dental treatments from preventive check-ups to advanced
             implantology. We combine digital precision with pain-free comfort.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {['5,000+ happy patients', 'Certified professionals', 'Digital X-rays & 3D scans'].map((item) => (
+            {['RCT with Rotatory Endodontics', 'Braces and Aligners', 'Implants'].map((item) => (
               <div key={item} style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -344,7 +346,7 @@ export default function About() {
             maxWidth: '500px',
             margin: '0 auto 2.5rem',
           }}>
-            Book your appointment online — it's quick, easy, and takes less than a minute.
+            Book your appointment online. It's quick, easy, and takes less than a minute.
           </p>
           <Link to="/book" style={{
             display: 'inline-block',
@@ -388,13 +390,13 @@ export default function About() {
       {/* Address */}
       <div>
         <p style={{ fontWeight: 700, color: '#023e8a', marginBottom: '0.3rem' }}>Address</p>
-        <p style={{ color: '#555' }}>Shimla, Himachal Pradesh, India</p>
+        <p style={{ color: '#555' }}>Kasumpti Shimla, Himachal Pradesh, India</p>
       </div>
       {/* Phone */}
       <div>
         <p style={{ fontWeight: 700, color: '#023e8a', marginBottom: '0.3rem' }}>Phone</p>
         <a href="tel:+919876543210" style={{ color: '#0077b6', textDecoration: 'none' }}>
-          +91 98765 43210
+          +91 94180 84508
         </a>
       </div>
       {/* Email */}

@@ -102,7 +102,7 @@ export default function HeroSection() {
             zIndex: 10,
           }}>
             <Link to="/book" style={{
-              padding: '1rem 2.5rem',
+              padding: '1.2rem 3.6rem',
               background: 'transparent',
               color: '#fff',
               borderRadius: '50px',

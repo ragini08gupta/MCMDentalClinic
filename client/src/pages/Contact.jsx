@@ -199,7 +199,7 @@ export default function Contact() {
               Contact Us
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto', lineHeight: 1.75 }}>
-              Whether you're booking your first visit or have a quick question — our team is here to help.
+              Whether you're booking your first visit or have a quick question our team is here to help.
             </p>
           </AnimatedSection>
         </div>
@@ -497,7 +497,7 @@ export default function Contact() {
             Ready for your next visit?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '1rem', marginBottom: '2.2rem', maxWidth: '440px', margin: '0 auto 2.2rem', lineHeight: 1.75 }}>
-            Book your appointment online — quick, easy, and takes less than a minute.
+            Book your appointment online. It's quick, easy, and takes less than a minute.
           </p>
           <a href="tel:+919418084508" className="cta-btn-white" style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.6rem',

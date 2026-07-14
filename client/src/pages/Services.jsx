@@ -334,7 +334,7 @@ export default function Services() {
         <section style={{ padding: '5rem 3rem', background: '#5BB4E5', textAlign: 'center', color: '#fff' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>Ready for your next visit?</h2>
           <p style={{ fontSize: '1.1rem', opacity: 0.92, marginBottom: '2rem', maxWidth: '480px', margin: '0 auto 2rem' }}>
-            Book your appointment online — it's quick, easy, and takes less than a minute.
+            Book your appointment online. It's quick, easy, and takes less than a minute.
           </p>
           <Link to="/contact" style={{
             padding: '1rem 3rem',

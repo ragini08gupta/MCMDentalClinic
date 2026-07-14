@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
+import api from '../api';
+
+// Combines the separate date ("2026-07-15") and time ("2:30 PM") fields from
+// the form into a single Date the backend can work with.
+function combineDateAndTime(dateStr, timeStr) {
+  const [time, meridiem] = timeStr.split(' ');
+  let [hours, minutes] = time.split(':').map(Number);
+  if (meridiem === 'PM' && hours !== 12) hours += 12;
+  if (meridiem === 'AM' && hours === 12) hours = 0;
+
+  const combined = new Date(dateStr);
+  combined.setHours(hours, minutes, 0, 0);
+  return combined;
+}
 
 const IconPhone = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -89,13 +103,41 @@ const TIMES = [
 ];
 
 export default function BookAppointment() {
-  const [form, setForm] = useState({ name: '', phone: '', service: '', date: '', time: '', notes: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', date: '', time: '', notes: '' });
   const [submitted, setSubmitted] = useState(false);
   const [activeField, setActiveField] = useState(null);
   const [hovTime, setHovTime] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = e => { e.preventDefault(); setSubmitted(true); };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setError('');
+
+    if (!form.date || !form.time) {
+      setError('Please select both a date and a time.');
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await api.post('/appointments', {
+        patientName: form.name,
+        email: form.email,
+        phone: form.phone,
+        service: form.service,
+        date: combineDateAndTime(form.date, form.time).toISOString(),
+        notes: form.notes,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Could not book that appointment. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const filled = Object.values(form).filter(Boolean).length;
   const total = Object.keys(form).length;
@@ -160,7 +202,7 @@ export default function BookAppointment() {
               Book an Appointment
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1rem', maxWidth: '480px', margin: '0 auto', lineHeight: 1.75 }}>
-              Fill in your details and we'll confirm your slot. Takes less than a minute.
+              Fill in your details to book a slot. Takes less than a minute.
             </p>
           </AnimatedSection>
         </div>
@@ -215,7 +257,7 @@ export default function BookAppointment() {
                   What to Expect
                 </p>
                 {[
-                  "We'll call you to confirm the slot",
+                  "Incase slot not available walk ins are welcome",
                   'Bring any previous dental records',
                   'Arrive 5 minutes early',
                   'All treatments explained before starting',
@@ -270,7 +312,7 @@ export default function BookAppointment() {
                     </p>
                   )}
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', service: '', date: '', time: '', notes: '' }); }}
+                    onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', service: '', date: '', time: '', notes: '' }); }}
                     className="submit-btn"
                     style={{ background: '#0077b6', color: '#fff', border: 'none', borderRadius: '8px', padding: '0.85rem 2rem', fontWeight: 700, cursor: 'pointer', fontSize: '0.95rem' }}
                   >
@@ -284,7 +326,7 @@ export default function BookAppointment() {
                       Book Your Appointment
                     </h3>
                     <p style={{ color: '#888', fontSize: '0.87rem' }}>
-                      Fill in the details below. We'll confirm your slot by phone.
+                      Fill in the details below to book your slot.
                     </p>
 
                     {/* Progress bar */}
@@ -318,6 +360,14 @@ export default function BookAppointment() {
                           onFocus={() => setActiveField('phone')} onBlur={() => setActiveField(null)}
                           placeholder="94180 84508" required style={inputStyle('phone')} />
                       </div>
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label style={labelStyle}>Email *</label>
+                      <input type="email" name="email" value={form.email} onChange={handleChange}
+                        onFocus={() => setActiveField('email')} onBlur={() => setActiveField(null)}
+                        placeholder="[email protected]" required style={inputStyle('email')} />
                     </div>
 
                     {/* Service */}
@@ -383,18 +433,25 @@ export default function BookAppointment() {
                         rows={3} style={{ ...inputStyle('notes'), resize: 'none' }} />
                     </div>
 
-                    <button type="submit" className="submit-btn" style={{
+                    {error && (
+                      <p style={{ background: '#fdecec', color: '#c0392b', padding: '0.7rem 1rem', borderRadius: '8px', fontSize: '0.85rem' }}>
+                        {error}
+                      </p>
+                    )}
+
+                    <button type="submit" className="submit-btn" disabled={submitting} style={{
                       background: '#0077b6', color: '#fff',
                       border: 'none', borderRadius: '8px',
                       padding: '1rem 2rem', fontWeight: 700,
-                      fontSize: '1rem', cursor: 'pointer',
+                      fontSize: '1rem', cursor: submitting ? 'default' : 'pointer',
+                      opacity: submitting ? 0.7 : 1,
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                     }}>
-                      Confirm Appointment <IconArrow />
+                      {submitting ? 'Booking...' : <>Confirm Appointment <IconArrow /></>}
                     </button>
 
                     <p style={{ color: '#bbb', fontSize: '0.75rem', textAlign: 'center' }}>
-                      We'll call you back within clinic hours to confirm your slot.
+                      
                     </p>
                   </form>
                 </>
