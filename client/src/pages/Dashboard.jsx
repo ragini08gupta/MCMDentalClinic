@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   const loadAppointments = async () => {
     try {
-      const { data } = await api.get('/appointments');
+      const { data } = await api.get('/api/appointments');
       setAppointments(data);
     } catch {
       setError('Could not load appointments');
@@ -40,7 +40,7 @@ export default function Dashboard() {
 
   const updateStatus = async (id, status) => {
     try {
-      await api.patch(`/appointments/${id}/status`, { status });
+      await api.patch(`/api/appointments/${id}/status`, { status });
       loadAppointments();
     } catch {
       setError('Could not update that appointment');
@@ -49,7 +49,7 @@ export default function Dashboard() {
 
   const updateRole = async (id, role) => {
     try {
-      await api.patch(`/users/${id}/role`, { role });
+      await api.patch(`/api/users/${id}/role`, { role });
       loadUsers();
     } catch {
       setError('Could not update that user');

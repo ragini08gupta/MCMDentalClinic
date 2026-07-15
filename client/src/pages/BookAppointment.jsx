@@ -123,7 +123,7 @@ export default function BookAppointment() {
 
     setSubmitting(true);
     try {
-      await api.post('/appointments', {
+      await api.post('/api/appointments', {
         patientName: form.name,
         email: form.email,
         phone: form.phone,
