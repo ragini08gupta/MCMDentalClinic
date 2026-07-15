@@ -14,8 +14,8 @@ function signToken(user) {
 function setAuthCookie(res, token) {
   res.cookie(COOKIE_NAME, token, {
     httpOnly: true, // not readable by JS -> protects against XSS token theft
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax', // blocks the token being sent on cross-site requests -> CSRF mitigation
+    secure: true, // required for sameSite: 'none' to work; both Render and Vercel serve HTTPS
+    sameSite: 'none', // frontend (Vercel) and backend (Render) are different domains, so this is required for the cookie to be sent cross-site
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 }
