@@ -305,7 +305,7 @@ export default function BookAppointment() {
                     Appointment Requested!
                   </h3>
                   <p style={{ color: '#555', lineHeight: 1.75, marginBottom: '0.4rem' }}>
-                    Thank you, <strong>{form.name}</strong>! We'll call you at <strong>{form.phone}</strong> to confirm your slot.
+                    Thank you, <strong>{form.name}</strong>! Appointment is <strong>{form.phone}</strong> received. Incase of any questions contact us.
                   </p>
                   {form.date && form.time && (
                     <p style={{ color: '#0077b6', fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.4rem' }}>
