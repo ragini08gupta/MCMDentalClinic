@@ -240,7 +240,7 @@ export default function Contact() {
                 Your smile starts<br />with a conversation.
               </h2>
               <p style={{ color: '#5a6e80', lineHeight: 1.85, marginBottom: '2.5rem', fontSize: '0.97rem' }}>
-                Fill out the form and we'll call you back to confirm your appointment. Walk-ins are also welcome during clinic hours.
+                Fill out the form to confirm your appointment. Walk-ins are also welcome during clinic hours.
               </p>
 
               {/* Why choose us */}
@@ -349,7 +349,7 @@ export default function Contact() {
                     Appointment Requested!
                   </h3>
                   <p style={{ color: '#555', lineHeight: 1.75, marginBottom: '0.5rem' }}>
-                    Thank you, <strong>{form.name}</strong>! We'll call you at <strong>{form.phone}</strong> to confirm.
+                    Thank you, <strong>{form.name}</strong>! Book your appointment <strong>{form.phone}</strong> now.
                   </p>
                   <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '2rem' }}>Mon–Sat, 9 AM – 1 PM & 2 – 6 PM</p>
                   <button
@@ -363,7 +363,7 @@ export default function Contact() {
               ) : (
                 <>
                   <h3 style={{ fontWeight: 800, color: '#0077b6', fontSize: '1.3rem', marginBottom: '0.25rem' }}>Book an Appointment</h3>
-                  <p style={{ color: '#888', fontSize: '0.87rem', marginBottom: '2rem' }}>We'll call you back to confirm. Quick & easy.</p>
+                  <p style={{ color: '#888', fontSize: '0.87rem', marginBottom: '2rem' }}>Fill your details to book online. Quick & easy.</p>
 
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
@@ -425,7 +425,7 @@ export default function Contact() {
                     </button>
 
                     <p style={{ color: '#bbb', fontSize: '0.75rem', textAlign: 'center' }}>
-                      We'll call you back within clinic hours to confirm.
+                      Appointment is confirmed. Walk ins are also welcome.
                     </p>
                   </form>
                 </>
