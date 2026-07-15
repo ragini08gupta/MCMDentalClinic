@@ -349,7 +349,7 @@ export default function Contact() {
                     Appointment Requested!
                   </h3>
                   <p style={{ color: '#555', lineHeight: 1.75, marginBottom: '0.5rem' }}>
-                    Thank you, <strong>{form.name}</strong>! Book your appointment <strong>{form.phone}</strong> now.
+                    Thank you, <strong>{form.name}</strong>! Appointment is booked <strong>{form.phone}</strong> now.
                   </p>
                   <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '2rem' }}>Mon–Sat, 9 AM – 1 PM & 2 – 6 PM</p>
                   <button
