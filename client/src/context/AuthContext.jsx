@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
 
   const refresh = useCallback(async () => {
     try {
-      const { data } = await api.get('/auth/me');
+      const { data } = await api.get('/api/auth/me');
       setUser(data);
     } catch {
       setUser(null);
@@ -21,19 +21,19 @@ export function AuthProvider({ children }) {
   useEffect(() => { refresh(); }, [refresh]);
 
   const login = async (email, password) => {
-    const { data } = await api.post('/auth/login', { email, password });
+    const { data } = await api.post('/api/auth/login', { email, password });
     setUser(data);
     return data;
   };
 
   const register = async (name, email, password) => {
-    const { data } = await api.post('/auth/register', { name, email, password });
+    const { data } = await api.post('/api/auth/register', { name, email, password });
     setUser(data);
     return data;
   };
 
   const logout = async () => {
-    await api.post('/auth/logout');
+    await api.post('/api/auth/logout');
     setUser(null);
   };
 
