@@ -27,6 +27,13 @@ router.post('/', attachUserIfPresent, async (req, res) => {
     if (!patientName || !email || !phone || !service || !date) {
       return res.status(400).json({ error: 'All fields are required' });
     }
+
+    // Block Sunday bookings — clinic is closed.
+    const appointmentDate = new Date(date);
+    if (appointmentDate.getDay() === 0) {
+      return res.status(400).json({ error: 'We are closed on Sundays. Please choose another day.' });
+    }
+
     if (!VALID_SERVICES.includes(service)) {
       return res.status(400).json({ error: 'Unknown service selected' });
     }

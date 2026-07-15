@@ -16,6 +16,12 @@ function combineDateAndTime(dateStr, timeStr) {
   return combined;
 }
 
+// Returns true if the given yyyy-mm-dd string falls on a Sunday.
+function isSunday(dateStr) {
+  if (!dateStr) return false;
+  return new Date(dateStr).getDay() === 0;
+}
+
 const IconPhone = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.69 3.29 2 2 0 0 1 3.64 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -384,10 +390,20 @@ export default function BookAppointment() {
                     {/* Date */}
                     <div>
                       <label style={labelStyle}>Preferred Date</label>
-                      <input type="date" name="date" value={form.date} onChange={handleChange}
-                        onFocus={() => setActiveField('date')} onBlur={() => setActiveField(null)}
-                        min={new Date().toISOString().split('T')[0]}
-                        style={inputStyle('date')} />
+                      <input type="date" name="date" value={form.date}
+                      onChange={e => {
+                        const picked = e.target.value;
+                          if (isSunday(picked)) {
+                          setError('We are closed on Sundays. Please choose another day.');
+                        setForm(f => ({ ...f, date: '' }));
+                        return;
+                        }
+                      setError('');
+                      setForm(f => ({ ...f, date: picked }));
+                      }}
+                      onFocus={() => setActiveField('date')} onBlur={() => setActiveField(null)}
+                      min={new Date().toISOString().split('T')[0]}
+                      style={inputStyle('date')} />
                     </div>
 
                     {/* Time slots */}
