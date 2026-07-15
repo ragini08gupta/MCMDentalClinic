@@ -9,10 +9,14 @@ require('dotenv').config();
 const app = express();
 
 app.use(helmet());
+
+const allowedOrigin = (process.env.CLIENT_ORIGIN || 'http://localhost:5173').replace(/\/$/, '');
+
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  origin: allowedOrigin,
   credentials: true, // required so the httpOnly auth cookie is sent/received
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
