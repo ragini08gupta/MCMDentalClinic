@@ -29,14 +29,18 @@ export default function Dashboard() {
   const loadUsers = async () => {
     if (user.role !== 'admin') return;
     try {
-      const { data } = await api.get('/users');
+      const { data } = await api.get('/api/users');
       setUsers(data);
     } catch {
       // Non-critical for this view; silently skip if it fails.
     }
   };
 
-  useEffect(() => { loadAppointments(); loadUsers(); }, []); // eslint-disable-line
+  useEffect(() => {
+  if (!user) return;
+  loadAppointments();
+  loadUsers();
+}, [user]); // eslint-disable-line
 
   const updateStatus = async (id, status) => {
     try {
