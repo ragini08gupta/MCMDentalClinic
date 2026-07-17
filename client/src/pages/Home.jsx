@@ -10,7 +10,7 @@ const services = [
   { title: 'Root Canal', desc: 'Painless modern root canal treatment' },
   { title: 'Dental Cleaning', desc: 'Thorough cleaning and plaque removal' },
   { title: 'Filling', desc: 'Durable tooth-colored fillings to repair cavities and protect your teeth.' },
-  { title: 'Crowns & Bridges', desc: 'Durable restorations to protect and complete your smile' },
+  { title: 'Crowns & Bridges', desc: 'Durable replacement of teeth to protect and complete your smile' },
   { title: 'Dentures', desc: 'Custom-made dentures that restore your smile, comfort, and confidence.' },
 ];
 
@@ -45,6 +45,9 @@ export default function Home() {
         .service-card:hover .service-card-desc {
           color: #fff !important;
         }
+        @media (max-width: 860px) {
+          .home-first-section { padding-top: calc(70px + clamp(3rem, 8vw, 5rem)) !important; }
+        }
       `}</style>
 
       {/* Hero */}
@@ -52,19 +55,19 @@ export default function Home() {
 
       {/* About strip */}
       <AnimatedSection>
-        <section style={{
-          padding: '5rem 3rem',
+        <section className="home-first-section" style={{
+          padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)',
           background: '#eaf6fd',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '4rem',
+          gap: 'clamp(2rem, 5vw, 4rem)',
           flexWrap: 'wrap',
         }}>
           <div style={{ maxWidth: '500px' }}>
-            <h2 style={{ fontSize: '2.2rem', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.3 }}>
-              Trusted Dental Care<br />
-              <span style={{ color: '#5BB4E5' }}>Since 2002</span>
+            <h2 style={{ fontSize: 'clamp(1.7rem, 5vw, 2.2rem)', fontWeight: 700, marginBottom: '1rem', lineHeight: 1.3 }}>
+              MCM Dental Clinic<br />
+              <span style={{ color: '#5BB4E5' }}>Trusted Dental Care<br /> Since 2002</span>
             </h2>
             <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '1.5rem' }}>
               At MCM Dental Clinic, we provide complete dental care from toothache relief and painless root canal treatments to braces, professional teeth cleaning, dentures and more. With advanced technology and a gentle approach, we ensure comfortable, pain-free treatment for every patient.
@@ -78,11 +81,12 @@ export default function Home() {
             </ul>
           </div>
           <div style={{
-            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem',
+            display: 'grid', gridTemplateColumns: 'repeat(2, minmax(120px, 180px))', gap: '1rem',
+            width: '100%', maxWidth: '380px', justifyContent: 'center',
           }}>
             {['/images/photo1.jpeg', '/images/photo2.jpeg', '/images/photo3.jpeg', '/images/photo4.jpeg'].map((src, i) => (
             <img key={i} src={src} alt={`Clinic photo ${i + 1}`} style={{
-            width: '180px', height: '180px',
+            width: '100%', aspectRatio: '1 / 1',
             borderRadius: '16px',
             objectFit: 'cover',
             }} />
@@ -92,11 +96,11 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Services */}
-      <section style={{ padding: '6rem 3rem', background: '#fff' }}>
+      <section style={{ padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem)', background: '#fff' }}>
         <AnimatedSection>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.85rem', marginBottom: '0.5rem' }}>WHAT WE OFFER</p>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Our Main Services</h2>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', fontWeight: 700 }}>Our Main Services</h2>
             <p style={{ color: '#666', marginTop: '0.75rem' }}>Comprehensive dental care for every stage of your smile.</p>
           </div>
         </AnimatedSection>
@@ -124,10 +128,10 @@ export default function Home() {
 
       {/* Before & After */}
       <AnimatedSection delay={0.1}>
-        <section style={{ padding: '6rem 3rem', background: '#eaf6fd' }}>
+        <section style={{ padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem)', background: '#eaf6fd' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.85rem', marginBottom: '0.5rem' }}>RESULTS</p>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>Before & After</h2>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', fontWeight: 700 }}>Before & After</h2>
           </div>
           <div style={{
             display: 'grid',
@@ -169,10 +173,10 @@ export default function Home() {
 
       {/* Reviews */}
       <AnimatedSection delay={0.1}>
-        <section style={{ padding: '6rem 3rem', background: '#fff' }}>
+        <section style={{ padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem)', background: '#fff' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.85rem', marginBottom: '0.5rem' }}>TESTIMONIALS</p>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>What Our Patients Say</h2>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', fontWeight: 700 }}>What Our Patients Say</h2>
           </div>
           <div style={{
             display: 'grid',
@@ -199,17 +203,17 @@ export default function Home() {
       {/* CTA Banner */}
       <AnimatedSection delay={0.1}>
         <section style={{
-          padding: '5rem 3rem',
+          padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)',
           background: '#5BB4E5',
           textAlign: 'center',
           color: '#fff',
         }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>Ready for your next visit?</h2>
-          <p style={{ fontSize: '1.1rem', opacity: 0.9, marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.7rem, 6vw, 2.5rem)', fontWeight: 700, marginBottom: '1rem' }}>Ready for your next visit?</h2>
+          <p style={{ fontSize: '1.05rem', opacity: 0.9, marginBottom: '2rem' }}>
             Book your appointment online. It's quick, easy, and takes less than a minute.
           </p>
           <Link to="/book" style={{
-            padding: '1rem 3rem',
+            padding: 'clamp(0.85rem, 3vw, 1rem) clamp(1.75rem, 6vw, 3rem)',
             background: '#fff',
             color: '#5BB4E5',
             borderRadius: '50px',
@@ -224,7 +228,7 @@ export default function Home() {
       <footer style={{
         background: '#1a1a2e',
         color: '#fff',
-        padding: '4rem 3rem 2rem',
+        padding: 'clamp(2.5rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem) 2rem',
       }}>
         <div style={{
           display: 'grid',
@@ -247,7 +251,7 @@ export default function Home() {
           </div>
           <div>
             <p style={{ fontWeight: 600, marginBottom: '1rem' }}>Get in touch</p>
-            {['+91 94180 84508', 'mcmdental@gmail.com', 'Kasumpti Shimla, Himachal Pradesh', 'Mon–Sat: 9:00 AM – 7:00 PM'].map(item => (
+            {['Dr. Mukul Kumar', '+91 94180 84508', 'Kuthiala Building Kasumpti Market Shimla, Himachal Pradesh', 'Mon–Sat: 9:00 AM – 6:00 PM'].map(item => (
               <p key={item} style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{item}</p>
             ))}
           </div>
@@ -265,7 +269,7 @@ export default function Home() {
           </div>
         </div>
         <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '0.85rem', marginTop: '2rem' }}>
-          © 2025 MCM Dental Clinic. All rights reserved.
+          © 2002 MCM Dental Clinic. All rights reserved.
         </p>
       </footer>
 

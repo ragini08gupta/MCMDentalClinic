@@ -51,7 +51,7 @@ const IconArrow = () => (
 function Footer() {
   const [hovLink, setHovLink] = useState(null);
   return (
-    <footer style={{ background: '#1a1a2e', color: '#fff', padding: '4rem 3rem 2rem' }}>
+    <footer style={{ background: '#1a1a2e', color: '#fff', padding: 'clamp(2.5rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem) 2rem' }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -78,7 +78,7 @@ function Footer() {
         </div>
         <div>
           <p style={{ fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', marginBottom: '1.2rem' }}>Get in touch</p>
-          {['+91 94180 84508', 'Kuthiala Building, Main Market', 'Kasumpti, Shimla – 171009', 'Mon–Sat: 9:00 AM – 1 PM & 2–6 PM', 'Sunday: Closed'].map(item => (
+          {['Dr. Mukul Kumar', '+91 94180 84508', 'Kuthiala Building, Main Market Kasumpti, Shimla – 171009', 'Mon–Sat: 9:00 AM – 1 PM & 2–6 PM', 'Sunday: Closed'].map(item => (
             <p key={item} style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{item}</p>
           ))}
         </div>
@@ -89,7 +89,7 @@ function Footer() {
         </div>
       </div>
       <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '0.82rem', marginTop: '2rem' }}>
-        © 2025 MCM Dental Clinic. All rights reserved.
+        © 2002 MCM Dental Clinic. All rights reserved.
       </p>
     </footer>
   );
@@ -179,6 +179,9 @@ export default function BookAppointment() {
         .submit-btn { transition: all 0.2s ease; }
         .info-strip:hover { border-color: #5BB4E5 !important; background: #eaf6fd !important; }
         .info-strip { transition: all 0.2s ease; }
+        @media (max-width: 860px) {
+          .booking-left-panel { position: static !important; top: auto !important; }
+        }
       `}</style>
 
       {/* ── HERO ── */}
@@ -187,7 +190,7 @@ export default function BookAppointment() {
         backgroundImage: 'url(/images/booking-hero.jpg)',
         backgroundSize: 'cover', backgroundPosition: 'center',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center', padding: '0 2rem',
+        textAlign: 'center', padding: '0 clamp(1.25rem, 5vw, 2rem)',
       }}>
         <div style={{ position: 'absolute', inset: 0, 
           background: `
@@ -216,18 +219,18 @@ export default function BookAppointment() {
 
       {/* ── MAIN CONTENT ── */}
       <AnimatedSection>
-        <section style={{ padding: '5rem 2rem', background: '#f0f9ff' }}>
+        <section style={{ padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 2rem)', background: '#f0f9ff' }}>
           <div style={{
             maxWidth: '1100px', margin: '0 auto',
-            display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: '4rem', alignItems: 'start',
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'start',
           }}>
 
             {/* ── Left panel ── */}
-            <div style={{ position: 'sticky', top: '90px' }}>
+            <div className="booking-left-panel" style={{ position: 'sticky', top: '90px' }}>
               <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.12em', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                 Clinic Details
               </p>
-              <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0077b6', lineHeight: 1.2, marginBottom: '2rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 5vw, 1.9rem)', fontWeight: 800, color: '#0077b6', lineHeight: 1.2, marginBottom: '2rem' }}>
                 MCM Dental Clinic
               </h2>
 
@@ -287,7 +290,7 @@ export default function BookAppointment() {
             <div style={{
               background: '#fff',
               borderRadius: '16px',
-              padding: '2.8rem',
+              padding: 'clamp(1.5rem, 6vw, 2.8rem)',
               border: '1px solid #d0eaf8',
               boxShadow: '0 4px 24px rgba(0,119,182,0.08)',
             }}>
@@ -353,7 +356,7 @@ export default function BookAppointment() {
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
 
                     {/* Name + Phone */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
                       <div>
                         <label style={labelStyle}>Full Name *</label>
                         <input name="name" value={form.name} onChange={handleChange}
@@ -409,7 +412,7 @@ export default function BookAppointment() {
                     {/* Time slots */}
                     <div>
                       <label style={labelStyle}>Preferred Time</label>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(75px, 1fr))', gap: '0.5rem' }}>
                         {TIMES.map(t => (
                           <button
                             key={t} type="button"
@@ -479,8 +482,8 @@ export default function BookAppointment() {
 
       {/* ── CTA ── */}
       <AnimatedSection>
-        <section style={{ padding: '4.5rem 3rem', background: '#5BB4E5', textAlign: 'center' }}>
-          <h2 style={{ color: '#fff', fontSize: '2rem', fontWeight: 800, marginBottom: '0.7rem' }}>
+        <section style={{ padding: 'clamp(3rem, 8vw, 4.5rem) clamp(1.25rem, 5vw, 3rem)', background: '#5BB4E5', textAlign: 'center' }}>
+          <h2 style={{ color: '#fff', fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 800, marginBottom: '0.7rem' }}>
             Prefer to call instead?
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '1rem', marginBottom: '1.8rem' }}>

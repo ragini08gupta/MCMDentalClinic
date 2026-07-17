@@ -63,9 +63,9 @@ export default function Dashboard() {
   const cardStyle = { background: '#fff', border: '1px solid #d0eaf8', borderRadius: '12px', padding: '1.2rem 1.5rem', marginBottom: '0.8rem' };
 
   return (
-    <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: '100vh', background: '#f0f9ff', padding: '6rem 2rem 4rem' }}>
+    <div style={{ fontFamily: "'Segoe UI', sans-serif", minHeight: '100vh', background: '#f0f9ff', padding: 'clamp(5.5rem, 10vw, 6rem) clamp(1.25rem, 5vw, 2rem) 4rem' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <h1 style={{ color: '#0077b6', fontWeight: 800 }}>Clinic Dashboard</h1>
             <p style={{ color: '#888', fontSize: '0.9rem' }}>Signed in as {user.name} ({user.role})</p>
@@ -113,7 +113,7 @@ export default function Dashboard() {
           <>
             <h2 style={{ color: '#0077b6', fontSize: '1.2rem', margin: '2rem 0 1rem' }}>Users</h2>
             {users.map((u) => (
-              <div key={u._id} style={{ ...cardStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div key={u._id} style={{ ...cardStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <div>
                   <p style={{ fontWeight: 700, color: '#1a1a2e' }}>{u.name}</p>
                   <p style={{ color: '#666', fontSize: '0.85rem' }}>{u.email}</p>

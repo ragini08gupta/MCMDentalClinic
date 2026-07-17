@@ -20,6 +20,10 @@ body {
   perspective-origin: center top;
 }
 
+img, video {
+  max-width: 100%;
+}
+
 nav a {
   color: rgba(0,0,0,0.65);
 }

@@ -17,7 +17,7 @@ export default function About() {
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
-  padding: '0 2rem',
+  padding: '0 clamp(1.25rem, 5vw, 2rem)',
 }}>
   {/* Dark overlay so text stays readable over the image */}
   <div style={{
@@ -50,7 +50,7 @@ export default function About() {
       </h1>
       <p style={{
         color: 'rgba(255,255,255,0.9)',
-        fontSize: '1.2rem',
+        fontSize: 'clamp(1rem, 3vw, 1.2rem)',
         maxWidth: '600px',
         margin: '0 auto',
       }}>
@@ -62,17 +62,17 @@ export default function About() {
 
       {/* 2. Care Beyond Treatment */}
       <section style={{
-        padding: '6rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)',
         maxWidth: '1200px',
         margin: '0 auto',
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '4rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gap: 'clamp(2rem, 5vw, 4rem)',
         alignItems: 'center',
       }}>
         <AnimatedSection>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontSize: 'clamp(1.8rem, 5vw, 3rem)',
             fontWeight: 800,
             color: '#0077b6',
             lineHeight: 1.2,
@@ -131,13 +131,13 @@ export default function About() {
       <AnimatedSection>
         <section style={{
           background: '#e0f4ff',
-          padding: '3rem 2rem',
+          padding: 'clamp(2rem, 6vw, 3rem) clamp(1.25rem, 5vw, 2rem)',
         }}>
           <div style={{
             maxWidth: '900px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
             gap: '2rem',
             textAlign: 'center',
           }}>
@@ -166,12 +166,12 @@ export default function About() {
 
       {/* 4. Modern Dentistry Section */}
       <section style={{
-        padding: '6rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)',
         maxWidth: '1200px',
         margin: '0 auto',
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '4rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gap: 'clamp(2rem, 5vw, 4rem)',
         alignItems: 'center',
       }}>
         <AnimatedSection delay={0.1}>
@@ -258,13 +258,13 @@ export default function About() {
 
       {/* 5. Meet The Team */}
       <section style={{
-        padding: '6rem 2rem',
+        padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)',
         background: '#e0f4ff',
         textAlign: 'center',
       }}>
         <AnimatedSection>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontSize: 'clamp(1.8rem, 5vw, 3rem)',
             fontWeight: 800,
             color: '#023e8a',
             marginBottom: '0.5rem',
@@ -326,14 +326,14 @@ export default function About() {
       <AnimatedSection>
         <section style={{
           position: 'relative',
-          padding: '6rem 2rem',
+          padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)',
           background: 'linear-gradient(135deg, #023e8a 0%, #0077b6 100%)',
           textAlign: 'center',
           overflow: 'hidden',
         }}>
           <h2 style={{
             color: '#fff',
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontSize: 'clamp(1.8rem, 5vw, 3rem)',
             fontWeight: 800,
             marginBottom: '1rem',
           }}>
@@ -366,12 +366,12 @@ export default function About() {
       {/* Visit Us / Contact / Map */}
 <AnimatedSection>
   <section style={{
-    padding: '5rem 2rem',
+    padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 2rem)',
     background: '#f0f9ff',
     textAlign: 'center',
   }}>
     <h2 style={{
-      fontSize: '2rem',
+      fontSize: 'clamp(1.6rem, 5vw, 2rem)',
       fontWeight: 800,
       color: '#023e8a',
       marginBottom: '0.5rem',
@@ -382,7 +382,7 @@ export default function About() {
     <div style={{
       display: 'flex',
       justifyContent: 'center',
-      gap: '4rem',
+      gap: 'clamp(2rem, 6vw, 4rem)',
       flexWrap: 'wrap',
       margin: '2rem auto',
       maxWidth: '800px',
@@ -390,7 +390,7 @@ export default function About() {
       {/* Address */}
       <div>
         <p style={{ fontWeight: 700, color: '#023e8a', marginBottom: '0.3rem' }}>Address</p>
-        <p style={{ color: '#555' }}>Kasumpti Shimla, Himachal Pradesh, India</p>
+        <p style={{ color: '#555' }}>Kuthiala building Kasumpti Market<br /> Shimla, Himachal Pradesh, India</p>
       </div>
       {/* Phone */}
       <div>
@@ -402,14 +402,14 @@ export default function About() {
       {/* Email */}
       <div>
         <p style={{ fontWeight: 700, color: '#023e8a', marginBottom: '0.3rem' }}>Email</p>
-        <a href="mailto:mcmdental@gmail.com" style={{ color: '#0077b6', textDecoration: 'none' }}>
-          mcmdental@gmail.com
+        <a href="mailto:mcmdentalclinic@gmail.com" style={{ color: '#0077b6', textDecoration: 'none' }}>
+          mcmdentalclinic@gmail.com
         </a>
       </div>
       {/* Hours */}
       <div>
         <p style={{ fontWeight: 700, color: '#023e8a', marginBottom: '0.3rem' }}>Hours</p>
-        <p style={{ color: '#555' }}>Mon–Sat: 9:00 AM – 7:00 PM</p>
+        <p style={{ color: '#555' }}>Mon–Sat: 9:00 AM – 6:00 PM</p>
         <p style={{ color: '#555' }}>Sunday: Closed</p>
       </div>
     </div>

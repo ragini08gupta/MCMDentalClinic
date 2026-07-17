@@ -3,6 +3,7 @@ import { useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const TOTAL_FRAMES = 240;
+const MOBILE_BREAKPOINT = 860;
 
 function preloadFrames() {
   const images = [];
@@ -20,6 +21,15 @@ export default function HeroSection() {
   const containerRef = useRef(null);
   const imagesRef = useRef([]);
   const [showButton, setShowButton] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= MOBILE_BREAKPOINT : false
+  );
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -32,7 +42,10 @@ export default function HeroSection() {
     [0, TOTAL_FRAMES - 1]
   );
 
+  // On mobile we skip the whole scroll-driven frame animation — no point
+  // downloading 240 landscape frames just to crop them into a portrait screen.
   useEffect(() => {
+    if (isMobile) return;
     imagesRef.current = preloadFrames();
     const firstImg = imagesRef.current[0];
     firstImg.onload = () => {
@@ -41,9 +54,10 @@ export default function HeroSection() {
       const ctx = canvas.getContext('2d');
       ctx.drawImage(firstImg, 0, 0, canvas.width, canvas.height);
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     const unsubscribe = frameIndex.on('change', (latest) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
@@ -57,8 +71,32 @@ export default function HeroSection() {
       setShowButton(index >= TOTAL_FRAMES - 1);
     });
     return unsubscribe;
-  }, [frameIndex]);
+  }, [frameIndex, isMobile]);
 
+  const bookButton = (
+    <Link to="/book" style={{
+      padding: 'clamp(0.9rem, 3vw, 1.2rem) clamp(1.75rem, 8vw, 3.6rem)',
+      background: 'transparent',
+      color: '#fff',
+      borderRadius: '50px',
+      textDecoration: 'none',
+      fontWeight: 600,
+      fontSize: 'clamp(0.9rem, 3vw, 1rem)',
+      letterSpacing: '0.05em',
+      border: 'none',
+      cursor: 'pointer',
+      textAlign: 'center',
+    }}>
+      Book Appointment
+    </Link>
+  );
+
+  // ── MOBILE: skip the hero entirely — the page starts at the next section ──
+  if (isMobile) {
+    return null;
+  }
+
+  // ── DESKTOP: original scroll-driven frame animation, unchanged ──
   return (
     // ← paddingTop pushes scroll start below navbar
     <div ref={containerRef} style={{
@@ -98,23 +136,10 @@ export default function HeroSection() {
             alignItems: 'flex-end',
             justifyContent: 'flex-start',
             paddingBottom: '6%',
-            paddingLeft: '6.5%',
+            paddingLeft: 'clamp(1.25rem, 6.5%, 6.5%)',
             zIndex: 10,
           }}>
-            <Link to="/book" style={{
-              padding: '1.2rem 3.6rem',
-              background: 'transparent',
-              color: '#fff',
-              borderRadius: '50px',
-              textDecoration: 'none',
-              fontWeight: 600,
-              fontSize: '1rem',
-              letterSpacing: '0.05em',
-              border: 'none',
-              cursor: 'pointer',
-            }}>
-              Book Appointment
-            </Link>
+            {bookButton}
           </div>
         )}
 

@@ -38,7 +38,7 @@ const IconArrow = () => (
 function Footer() {
   const [hovLink, setHovLink] = useState(null);
   return (
-    <footer style={{ background: '#1a1a2e', color: '#fff', padding: '4rem 3rem 2rem' }}>
+    <footer style={{ background: '#1a1a2e', color: '#fff', padding: 'clamp(2.5rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem) 2rem' }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -67,7 +67,7 @@ function Footer() {
         </div>
         <div>
           <p style={{ fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', marginBottom: '1.2rem' }}>Get in touch</p>
-          {['+91 94180 84508', 'Kuthiala Building, Main Market', 'Kasumpti, Shimla – 171009', 'Mon–Sat: 9:00 AM – 1 PM & 2–6 PM', 'Sunday: Closed'].map(item => (
+          {['Dr. Mukul Kumar', '+91 94180 84508', 'Kuthiala Building, Main Market Kasumpti, Shimla – 171009', 'Mon–Sat: 9:00 AM – 1 PM & 2–6 PM', 'Sunday: Closed'].map(item => (
             <p key={item} style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>{item}</p>
           ))}
         </div>
@@ -79,7 +79,7 @@ function Footer() {
         </div>
       </div>
       <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '0.82rem', marginTop: '2rem' }}>
-        © 2025 MCM Dental Clinic. All rights reserved.
+        © 2002 MCM Dental Clinic. All rights reserved.
       </p>
     </footer>
   );
@@ -132,30 +132,8 @@ const DAYS = [
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [activeField, setActiveField] = useState(null);
-  const [hovBtn, setHovBtn] = useState(false);
-
   const todayIdx = new Date().getDay();
   const adjustedToday = todayIdx === 0 ? 6 : todayIdx - 1;
-
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
-  const handleSubmit = e => { e.preventDefault(); setSubmitted(true); };
-
-  const inputStyle = name => ({
-    width: '100%',
-    padding: '0.9rem 1rem',
-    border: `1.5px solid ${activeField === name ? '#0077b6' : '#d0eaf8'}`,
-    borderRadius: '8px',
-    fontSize: '0.95rem',
-    background: activeField === name ? '#f0f9ff' : '#fff',
-    color: '#1a1a2e',
-    outline: 'none',
-    fontFamily: "'Segoe UI', sans-serif",
-    transition: 'border-color 0.2s, background 0.2s, box-shadow 0.2s',
-    boxShadow: activeField === name ? '0 0 0 3px rgba(0,119,182,0.1)' : 'none',
-  });
 
   return (
     <div style={{ fontFamily: "'Segoe UI', sans-serif", color: '#1a1a2e', background: '#fff' }}>
@@ -177,7 +155,7 @@ export default function Contact() {
         backgroundImage: 'url(/images/contact-hero.jpg)',
         backgroundSize: 'cover', backgroundPosition: 'center',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        textAlign: 'center', padding: '0 2rem',
+        textAlign: 'center', padding: '0 clamp(1.25rem, 5vw, 2rem)',
       }}>
         <div style={{ position: 'absolute', inset: 0, 
          background: `
@@ -207,7 +185,7 @@ export default function Contact() {
 
       {/* ── 4 INFO CARDS ── */}
       <AnimatedSection>
-        <section style={{ padding: '4.5rem 2rem', background: '#f0f9ff' }}>
+        <section style={{ padding: 'clamp(2.5rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 2rem)', background: '#f0f9ff' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
@@ -217,18 +195,18 @@ export default function Contact() {
           }}>
             <InfoCard Icon={IconPin}      title="Address"         lines={['Kuthiala Building', 'Main Market, Kasumpti', 'Shimla – 171009, HP']} />
             <InfoCard Icon={IconPhone}    title="Phone"           lines={['+91 94180 84508']} href="tel:+919418084508" />
-            <InfoCard Icon={IconClock}    title="Morning Hours"   lines={['9:00 AM – 1:00 PM', 'Mon – Saturday']} />
-            <InfoCard Icon={IconCalendar} title="Afternoon Hours" lines={['2:00 PM – 6:00 PM', 'Sunday: Closed']} />
+            <InfoCard Icon={IconClock}    title="Morning Hours"   lines={['9:00 AM – 1:00 PM', 'Mon – Saturday', 'Sunday: Closed']} />
+            <InfoCard Icon={IconCalendar} title="Afternoon Hours" lines={['2:00 PM – 6:00 PM', 'Mon – Saturday', 'Sunday: Closed']} />
           </div>
         </section>
       </AnimatedSection>
 
       {/* ── FORM + LEFT PANEL ── */}
       <AnimatedSection>
-        <section style={{ padding: '6rem 2rem', background: '#fff' }}>
+        <section style={{ padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)', background: '#fff' }}>
           <div style={{
             maxWidth: '1100px', margin: '0 auto',
-            display: 'grid', gridTemplateColumns: '1fr 1.45fr', gap: '5rem', alignItems: 'start',
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'clamp(2.5rem, 6vw, 5rem)', alignItems: 'start',
           }}>
 
             {/* ── Left ── */}
@@ -240,7 +218,7 @@ export default function Contact() {
                 Your smile starts<br />with a conversation.
               </h2>
               <p style={{ color: '#5a6e80', lineHeight: 1.85, marginBottom: '2.5rem', fontSize: '0.97rem' }}>
-                Fill out the form to confirm your appointment. Walk-ins are also welcome during clinic hours.
+                Book your appointment online in seconds. Walk-ins are also welcome during clinic hours.
               </p>
 
               {/* Why choose us */}
@@ -329,107 +307,47 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* ── Right — Form ── */}
+            {/* ── Right — Book CTA ── */}
             <div style={{
               background: '#f5fbff',
               borderRadius: '16px',
-              padding: '2.8rem',
+              padding: 'clamp(2rem, 6vw, 2.8rem)',
               border: '1px solid #d0eaf8',
               boxShadow: '0 4px 24px rgba(0,119,182,0.09)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              justifyContent: 'center',
+              minHeight: '360px',
             }}>
-              {submitted ? (
-                <div style={{ textAlign: 'center', padding: '2.5rem 1rem' }}>
-                  <div style={{
-                    width: '72px', height: '72px', borderRadius: '50%',
-                    background: '#0077b6', color: '#fff',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 1.5rem',
-                  }}><IconCheck /></div>
-                  <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0077b6', marginBottom: '0.6rem' }}>
-                    Appointment Requested!
-                  </h3>
-                  <p style={{ color: '#555', lineHeight: 1.75, marginBottom: '0.5rem' }}>
-                    Thank you, <strong>{form.name}</strong>! Appointment at  <strong>{form.phone}</strong> is received. Incase of any questions contact us.
-                  </p>
-                  <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '2rem' }}>Mon–Sat, 9 AM – 1 PM & 2 – 6 PM</p>
-                  <button
-                    onClick={() => { setSubmitted(false); setForm({ name: '', phone: '', service: '', message: '' }); }}
-                    className="submit-btn"
-                    style={{ background: '#0077b6', color: '#fff', border: 'none', borderRadius: '8px', padding: '0.85rem 2rem', fontWeight: 700, cursor: 'pointer', fontSize: '0.95rem' }}
-                  >
-                    Book Another
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <h3 style={{ fontWeight: 800, color: '#0077b6', fontSize: '1.3rem', marginBottom: '0.25rem' }}>Book an Appointment</h3>
-                  <p style={{ color: '#888', fontSize: '0.87rem', marginBottom: '2rem' }}>Fill your details to book online. Quick & easy.</p>
+              <div style={{
+                width: '72px', height: '72px', borderRadius: '50%',
+                background: '#0077b6', color: '#fff',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '1.5rem',
+              }}><IconCheck /></div>
 
-                  <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0077b6', marginBottom: '0.4rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Full Name *</label>
-                        <input name="name" value={form.name} onChange={handleChange}
-                          onFocus={() => setActiveField('name')} onBlur={() => setActiveField(null)}
-                          placeholder="Rahul Sharma" required style={inputStyle('name')} />
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0077b6', marginBottom: '0.4rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Phone *</label>
-                        <input name="phone" value={form.phone} onChange={handleChange}
-                          onFocus={() => setActiveField('phone')} onBlur={() => setActiveField(null)}
-                          placeholder="94180 84508" required style={inputStyle('phone')} />
-                      </div>
-                    </div>
+              <h3 style={{ fontWeight: 800, color: '#0077b6', fontSize: '1.4rem', marginBottom: '0.6rem' }}>
+                Ready to book?
+              </h3>
+              <p style={{ color: '#5a6e80', lineHeight: 1.75, marginBottom: '2rem', fontSize: '0.95rem', maxWidth: '340px' }}>
+                Skip the back-and-forth, pick a service, date, and time slot online in under a minute.
+              </p>
 
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0077b6', marginBottom: '0.4rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Service Needed</label>
-                      <select name="service" value={form.service} onChange={handleChange}
-                        onFocus={() => setActiveField('service')} onBlur={() => setActiveField(null)}
-                        style={{ ...inputStyle('service'), cursor: 'pointer' }}>
-                        <option value="">Select a service...</option>
-                        {['General Checkup', 'Tooth Removal', 'RCT (Root Canal)', 'Teeth Cleaning', 'Veneers & Laminates', 'Crowns & Bridges', 'Dentures', 'Braces / Orthodontics', 'Emergency Care', 'Other'].map(s => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
-                    </div>
+              <Link to="/book" className="submit-btn" style={{
+                background: '#0077b6', color: '#fff', border: 'none',
+                borderRadius: '8px', padding: '1rem 2.25rem',
+                fontWeight: 700, fontSize: '1rem', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
+                textDecoration: 'none',
+              }}>
+                Book an Appointment <IconArrow />
+              </Link>
 
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: '#0077b6', marginBottom: '0.4rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Message</label>
-                      <textarea name="message" value={form.message} onChange={handleChange}
-                        onFocus={() => setActiveField('message')} onBlur={() => setActiveField(null)}
-                        placeholder="Describe your concern or preferred appointment time..."
-                        rows={4} style={{ ...inputStyle('message'), resize: 'none' }} />
-                    </div>
-
-                    {/* Progress dots */}
-                    <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
-                      {['name', 'phone', 'service', 'message'].map(f => (
-                        <div key={f} style={{
-                          height: '3px', flex: 1, borderRadius: '3px',
-                          background: form[f] ? '#0077b6' : '#d0eaf8',
-                          transition: 'background 0.3s',
-                        }} />
-                      ))}
-                      <span style={{ fontSize: '0.72rem', color: '#888', whiteSpace: 'nowrap', marginLeft: '0.4rem' }}>
-                        {[form.name, form.phone, form.service, form.message].filter(Boolean).length}/4
-                      </span>
-                    </div>
-
-                    <button type="submit" className="submit-btn" style={{
-                      background: '#0077b6', color: '#fff', border: 'none',
-                      borderRadius: '8px', padding: '1rem 2rem',
-                      fontWeight: 700, fontSize: '1rem', cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                    }}>
-                      Send Message <IconArrow />
-                    </button>
-
-                    <p style={{ color: '#bbb', fontSize: '0.75rem', textAlign: 'center' }}>
-                      Appointment is confirmed. Walk ins are also welcome.
-                    </p>
-                  </form>
-                </>
-              )}
+              <p style={{ color: '#bbb', fontSize: '0.75rem', marginTop: '1.25rem' }}>
+                Prefer to call instead? Use the number on the left.
+              </p>
             </div>
           </div>
         </section>
@@ -437,13 +355,13 @@ export default function Contact() {
 
       {/* ── VISIT US / MAP ── */}
       <AnimatedSection>
-        <section style={{ padding: '5rem 2rem', background: '#eaf6fd' }}>
+        <section style={{ padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 2rem)', background: '#eaf6fd' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.12em', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
                 Location
               </p>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0077b6', marginBottom: '0.5rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 5vw, 2.2rem)', fontWeight: 800, color: '#0077b6', marginBottom: '0.5rem' }}>
                 Visit Us in Person
               </h2>
               <p style={{ color: '#5a6e80', fontSize: '0.97rem' }}>
@@ -489,7 +407,7 @@ export default function Contact() {
 
       {/* ── CTA ── */}
       <AnimatedSection>
-        <section style={{ padding: '5rem 3rem', background: '#5BB4E5', textAlign: 'center' }}>
+        <section style={{ padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)', background: '#5BB4E5', textAlign: 'center' }}>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 600, letterSpacing: '0.12em', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '0.7rem' }}>
             Ready?
           </p>

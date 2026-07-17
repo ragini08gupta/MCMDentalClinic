@@ -23,7 +23,7 @@ const services = [
     title: 'Orthodontics',
     tag: 'STRENGTH & FUNCTION',
     description: 'We use modern orthodontic solutions, including invisible aligners, to align your teeth comfortably and discreetly.',
-    items: ['Zirconia crowns', 'Ceramic Crowns', 'Metal Free Ceramic Crowns', 'Long Span Bridge'],
+    items: ['Metal Braces', 'Ceramic Braces', 'Lingual Braces', 'Aligners'],
     img: '/images/crowns.jpg',
     side: 'left',
   },
@@ -39,7 +39,7 @@ const services = [
     title: 'Surgical & Periodontal',
     tag: 'ADVANCED TREATMENT',
     description: 'From painless extractions to advanced gum procedures — performed with precision instruments and modern techniques for faster healing.',
-    items: ['Painfree Removal of Tooth', 'Flap Surgery', 'RCT (Root Canal)', 'Orthodontist on Call'],
+    items: ['Painfree Removal of Tooth', 'Flap Surgery', 'Surgical Extraction', 'Curettage'],
     img: '/images/surgery.jpeg',
     side: 'left',
   },
@@ -55,16 +55,16 @@ const services = [
 
 const allServices = [
   'Painfree Removal of Tooth', 'Imported Teeth Set', 'Flexible Denture',
-  'Cast Partial Denture', 'Composite Fillings', 'Laminates & Veneers',
-  'Diastema Closure', 'Restoration of Fractured Tooth', 'X-Rays',
+  'Cast Partial Denture', 'Composite Fillings', 'Veneers',
+  'Diastema Closure', 'Restoration of Fractured Tooth', 'Digital X-Rays',
   'Orthodontist on Call', 'Oral Prophylaxis', 'Flap Surgery',
-  'RCT', 'Metal Crowns', 'Ceramic Crowns',
-  'Metal Free Ceramic Crowns', 'Long Span Bridge', 'Special Treatment for Children',
+  'RCT', 'Complete Denture', 'Ceramic Crowns',
+  'Composite Splinting', 'Bridge & Aligners', 'Special Treatment for Children',
 ];
 
 function Footer() {
   return (
-    <footer style={{ background: '#1a1a2e', color: '#fff', padding: '4rem 3rem 2rem' }}>
+    <footer style={{ background: '#1a1a2e', color: '#fff', padding: 'clamp(2.5rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem) 2rem' }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -94,9 +94,9 @@ function Footer() {
         <div>
           <p style={{ fontWeight: 600, marginBottom: '1rem' }}>Get in touch</p>
           {[
+            'Dr. Mukul Kumar',
             '+91 94180 84508',
-            'Kuthiala Building, Main Market',
-            'Kasumpti, Shimla – 171009',
+            'Kuthiala Building, Main Market Kasumpti, Shimla – 171009',
             'Mon–Sat: 9:00 AM – 1 PM & 2–6 PM',
             'Sunday: Closed',
           ].map(item => (
@@ -117,7 +117,7 @@ function Footer() {
         </div>
       </div>
       <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.3)', fontSize: '0.85rem', marginTop: '2rem' }}>
-        © 2025 MCM Dental Clinic. All rights reserved.
+        © 2002 MCM Dental Clinic. All rights reserved.
       </p>
     </footer>
   );
@@ -141,7 +141,7 @@ export default function Services() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '0 2rem',
+        padding: '0 clamp(1.25rem, 5vw, 2rem)',
       }}>
         <div style={{ position: 'absolute', inset: 0, 
           background: `
@@ -162,8 +162,8 @@ export default function Services() {
             <h1 style={{ color: '#fff', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.1 }}>
               Our Services
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem', maxWidth: '520px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
-              18 specialised dental services — all under one roof in the heart of Kasumpti, Shimla.
+            <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', maxWidth: '520px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
+              All services under one roof in the heart of Kasumpti, Shimla.
             </p>
             <Link to="/contact" style={{
               padding: '0.85rem 2.2rem',
@@ -184,15 +184,15 @@ export default function Services() {
       {services.map((svc, i) => (
         <AnimatedSection key={svc.title} delay={0.05}>
           <section style={{
-            padding: '6rem 2rem',
+            padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)',
             background: i % 2 === 0 ? '#fff' : '#eaf6fd',
           }}>
             <div style={{
               maxWidth: '1100px',
               margin: '0 auto',
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '4rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: 'clamp(2rem, 5vw, 4rem)',
               alignItems: 'center',
               direction: svc.side === 'right' ? 'rtl' : 'ltr',
             }}>
@@ -232,7 +232,7 @@ export default function Services() {
                 </p>
 
                 {/* Service item cards */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginBottom: '2rem' }}>
                   {svc.items.map((item) => (
                     <div
                       key={item}
@@ -280,13 +280,13 @@ export default function Services() {
 
       {/* ── ALL SERVICES GRID ── */}
       <AnimatedSection>
-        <section style={{ padding: '6rem 2rem', background: '#e0f4ff' }}>
+        <section style={{ padding: 'clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2rem)', background: '#e0f4ff' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <p style={{ color: '#5BB4E5', fontWeight: 600, letterSpacing: '0.1em', fontSize: '0.85rem', marginBottom: '0.5rem' }}>
                 OUR SERVICES
               </p>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#023e8a', marginBottom: '0.75rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', fontWeight: 700, color: '#023e8a', marginBottom: '0.75rem' }}>
                 All Facilities Available
               </h2>
               <p style={{ color: '#555', fontSize: '1rem', maxWidth: '500px', margin: '0 auto' }}>
@@ -331,13 +331,13 @@ export default function Services() {
 
       {/* ── CTA BANNER ── */}
       <AnimatedSection>
-        <section style={{ padding: '5rem 3rem', background: '#5BB4E5', textAlign: 'center', color: '#fff' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem' }}>Ready for your next visit?</h2>
-          <p style={{ fontSize: '1.1rem', opacity: 0.92, marginBottom: '2rem', maxWidth: '480px', margin: '0 auto 2rem' }}>
+        <section style={{ padding: 'clamp(3rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem)', background: '#5BB4E5', textAlign: 'center', color: '#fff' }}>
+          <h2 style={{ fontSize: 'clamp(1.7rem, 6vw, 2.5rem)', fontWeight: 700, marginBottom: '1rem' }}>Ready for your next visit?</h2>
+          <p style={{ fontSize: '1.05rem', opacity: 0.92, marginBottom: '2rem', maxWidth: '480px', margin: '0 auto 2rem' }}>
             Book your appointment online. It's quick, easy, and takes less than a minute.
           </p>
           <Link to="/contact" style={{
-            padding: '1rem 3rem',
+            padding: 'clamp(0.85rem, 3vw, 1rem) clamp(1.75rem, 6vw, 3rem)',
             background: '#fff',
             color: '#0077b6',
             borderRadius: '50px',
